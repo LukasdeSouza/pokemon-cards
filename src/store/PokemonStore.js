@@ -5,6 +5,7 @@ class PokemonStore {
   state = {
     pokemon: [],
     page: 1,
+    loading: false,
   }
   alert = {
     open: false,
