@@ -14,14 +14,16 @@ class PokemonController {
   async fetchPokemon(page) {
     this.store.setState('loading', true)
 
-    await fetch(`${baseUrl}-form/${page}`)
-      .then((data) => data.json()
-        .then((res) => this.store.setState('pokemon', res)))
-      .finally(() => {
-        this.store.setState('loading', false)
-      })
-  }
+    setTimeout(() => {
+      fetch(`${baseUrl}-form/${page}`)
+        .then((data) => data.json()
+          .then((res) => this.store.setState('pokemon', res)))
+        .finally(() => {
+          this.store.setState('loading', false)
+        })
+    }, 500)
 
+  }
 
 }
 

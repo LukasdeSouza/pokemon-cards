@@ -1,5 +1,5 @@
 import { ArrowBack, ArrowBackIos, ArrowForward, ArrowForwardIos, GitHub } from '@mui/icons-material'
-import { Button, Chip, CircularProgress, IconButton, Link, Stack, Typography } from '@mui/material'
+import { Button, Chip, CircularProgress, IconButton, Link, Stack, Tooltip, Typography } from '@mui/material'
 import { observer } from 'mobx-react-lite'
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -45,8 +45,8 @@ const MainPage = observer(() => {
               </IconButton>
               {pokemonStore.state.loading
                 ?
-                <Stack height={100}>
-                  <CircularProgress size={'small'} color={'primary'} />
+                <Stack height={100} width={100}>
+                  <CircularProgress size={'small'} color={'info'} />
                 </Stack>
                 :
                 <Stack height={100}>
@@ -61,16 +61,23 @@ const MainPage = observer(() => {
               </IconButton>
             </Stack>
             <Stack spacing={1}>
-              <Chip color='primary' label={`first type: ${pokemonList.types[0]?.type?.name}`} variant='outlined'
-                sx={{ height: 40 }} />
-              <Chip color='primary'
-                label={`second-type: ${pokemonList.types[1]?.type?.name === undefined ? 'none' : pokemonList.types[1]?.type?.name}`} variant='outlined'
-                sx={{ height: 40 }} />
-              <Stack alignItems={'center'}>
-                <Link href='https://github.com/LukasdeSouza' target={'_blank'}>
-                  <GitHub color='primary' fontSize='18px' />
-                </Link>
-              </Stack>
+              <Tooltip title='Principal tipo do Pokemon'>
+                <Chip color='primary'
+                  label={`first type: ${pokemonList.types[0]?.type?.name}`} variant='outlined'
+                  sx={{ height: 40 }} />
+              </Tooltip>
+              <Tooltip title='Tipo secundário do Pokemon'>
+                <Chip color='primary'
+                  label={`second-type: ${pokemonList.types[1]?.type?.name === undefined ? 'none' : pokemonList.types[1]?.type?.name}`} variant='outlined'
+                  sx={{ height: 40 }} />
+              </Tooltip>
+              <Tooltip title='Acesse este projeto em meu Github'>
+                <Stack alignItems={'center'}>
+                  <Link href='https://github.com/LukasdeSouza' target={'_blank'}>
+                    <GitHub color='primary' fontSize='18px' />
+                  </Link>
+                </Stack>
+              </Tooltip>
             </Stack>
           </Stack>
         </Stack>
