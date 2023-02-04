@@ -30,7 +30,8 @@ const MainPage = observer(() => {
       {pokemonStore.state.pokemon.pokemon
         &&
         <Stack width={'100%'} height={'100%'}
-          alignItems={'center'} justifyContent={'center'} margin={'0 auto'} textAlign={"center"} >
+          alignItems={'center'} justifyContent={'center'} margin={'0 auto'} textAlign={"center"}
+          boxShadow={9} >
           <Stack padding={2} height={270} width={300}
             backgroundColor={'#EEEE'} borderRadius={2} border={'1px solid lightblue'}>
             <Typography variant='h6' color='primary' fontWeight={500}>
